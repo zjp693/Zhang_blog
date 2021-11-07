@@ -5,7 +5,7 @@ heroAlt: Logo image
 heroText: 标题
 tagline: Hero subtitle
 actionText: 开始阅读
-actionLink: /documents/aaa
+actionLink: /documents
 features:
   - title: Simplicity First
     details: Minimal setup with markdown-centered project structure helps you focus on writing.
