@@ -1,0 +1,21 @@
+{
+  "name": "zjp693.github.io",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:zjp693/zjp693.github.io.git",
+  "author": "e <942680978@qq.com>",
+  "license": "MIT",
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:serve": "vitepress serve docs",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "vitepress": "^0.20.0"
+  },
+  "devDependencies": {
+    "stylus": "^0.55.0",
+    "stylus-loader": "^6.2.0"
+  }
+}
