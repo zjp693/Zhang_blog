@@ -35,10 +35,13 @@ export default {
       indexName: 'vitepress'
     },
     nav: [
-      { text: 'Guide', link: '/', activeMatch: '^/$|^/guide/' },
       {
-        text: 'Config Reference',
-        link: '/config/basics',
+        text: '前端算法', link: '/', activeMatch: '^/$|^/guide/', items: [
+          { text: 'GitHub地址', link: '' },]
+      },
+      {
+        text: '技术',
+        link: '/documents/index.html',
         activeMatch: '^/config/'
       }
     ],
