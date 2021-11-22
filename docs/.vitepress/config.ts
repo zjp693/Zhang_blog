@@ -37,11 +37,11 @@ export default {
     nav: [
       {
         text: '前端算法', link: '/', activeMatch: '^/$|^/guide/', items: [
-          { text: 'GitHub地址', link: '' },]
+          { text: '测试', link: '/documents/promise.html' },]
       },
       {
         text: '技术',
-        link: '/documents/index.html',
+        link: '/documents/promise.html',
         activeMatch: '^/config/'
       }
     ],
@@ -56,7 +56,7 @@ function getGuideSidebar() {
     {
       text: '基础语法',
       children: [
-        { text: '1. Vue介绍', link: '/documents/index' },
+        { text: '1. promise 原理', link: '/documents/promise' },
         { text: '2. Vue基本使用', link: '/documents/bbb' },
         // { text: '3. MVVM模式', link: '/documents/Vue/mvvm' },
         // { text: '4. 指令', link: '/documents/Vue/directive' },
