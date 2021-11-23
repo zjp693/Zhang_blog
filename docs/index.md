@@ -2,7 +2,7 @@
 home: true
 heroImage: /logo.png
 heroAlt: Logo image
-heroText: 欢迎
+heroText: 一花一世界
 # tagline: Hero subtitle
 actionText: 开始阅读 →
 actionLink: /documents/promise
