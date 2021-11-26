@@ -5,7 +5,7 @@ heroAlt: Logo image
 heroText: 一花一世界
 # tagline: Hero subtitle
 actionText: 开始阅读 →
-actionLink: /documents/promise
+actionLink: /documents/01_promise
 features:
   - title: 个人思考与积累
     details: 个人对事物的思考与平时的一些积累，一些上手即用的东西/知识点等内容，范围较广。
