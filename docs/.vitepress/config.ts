@@ -58,7 +58,6 @@ function getGuideSidebar() {
       children: [
         { text: '1. promise 原理', link: '/documents/01_promise' },
         { text: '2. Vue基本使用', link: '/documents/02_bbb' },
-
         { text: '3. mysql80安装教程', link: '/documents/03_mysql80安装教程' },
         { text: '4. 指令', link: '/documents/Vue/1111' },
         // { text: '5. 计算属性', link: '/documents/Vue/computed' },
