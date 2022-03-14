@@ -57,7 +57,7 @@ function getGuideSidebar() {
       text: '基础语法',
       children: [
         { text: '1. promise 原理', link: '/documents/01_promise' },
-        { text: '2. Vue基本使用', link: '/documents/02_bbb' },
+        { text: '2. <script setup>语法糖', link: '/documents/02_script setup语法糖' },
         { text: '3. mysql80安装教程', link: '/documents/03_mysql80安装教程' },
         { text: '4. 指令', link: '/documents/Vue/1111' },
         // { text: '5. 计算属性', link: '/documents/Vue/computed' },
@@ -73,33 +73,6 @@ function getGuideSidebar() {
          { text: 'Differences from Vuepress', link: '/guide/introduce' }
        ]
      },
-     {
-       text: 'VueRouter',
-       children: [
-         { text: 'Frontmatter', link: '/guide/introduce' },
-         { text: 'Theming', link: '/guide/introduce' },
-         { text: 'API Reference', link: '/guide/introduce' },
-         { text: 'Differences from Vuepress', link: '/guide/introduce' }
-       ]
-     },
- 
-     {
-       text: 'Vuex',
-       children: [
-         { text: 'Frontmatter', link: '/guide/introduce' },
-         { text: 'Theming', link: '/guide/introduce' },
-         { text: 'API Reference', link: '/guide/introduce' },
-         { text: 'Differences from Vuepress', link: '/guide/introduce' }
-       ]
-     },
-     {
-       text: 'Nuxt',
-       children: [
-         { text: 'Frontmatter', link: '/guide/introduce' },
-         { text: 'Theming', link: '/guide/introduce' },
-         { text: 'API Reference', link: '/guide/introduce' },
-         { text: 'Differences from Vuepress', link: '/guide/introduce' }
-       ]
-     }*/
+*/
   ]
 }
