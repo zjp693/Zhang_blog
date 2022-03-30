@@ -1,17 +1,23 @@
+<script setup>
+// This starter template is using Vue 3 <script setup> SFCs
+// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
+
+</script>
+
 <template>
-  <div id="app">
-    <!-- 路由占位符 -->
-    <keep-alive>
-      <router-view></router-view>
-    </keep-alive>
-  </div>
+  <router-view></router-view>
 </template>
 
-<style lang="less">
+<style>
+html,body {
+
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  // -webkit- -moz-  -o- 统称为浏览器私有前缀
-  // 如果想要让代码自动检测并添加浏览器的私有前缀 请使用postcss
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

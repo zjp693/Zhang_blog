@@ -1,15 +1,17 @@
 export default {
   lang: 'en-US',
-  title: '黑马头条',
-  description: '一个 移动端 技术论坛',
-  base: "/HeiMaTouTiao",
+  title: 'bunnyfairy',
+  description: 'bunnyfairy technical documentation',
+  base: "/BunnyFairy",
   // markdown文件设置
   markdown: {
-    lineNumbers: false
+    lineNumbers: true
   },
   themeConfig: {
     // 设置文档所在的文件夹
     docsDir: 'docs',
+    // 是否展示 可编辑文档
+    editLinks: true,
     // 搜索插件
     algolia: {
       apiKey: 'c57105e511faa5558547599f120ceeba',
@@ -34,147 +36,218 @@ export default {
 function getGuideSidebar() {
   return [
     {
-      text: "前期准备",
+      text: "前置内容",
       children: [
-        { text: '项目介绍', link: '/early/introduction' },
-        { text: '项目创建', link: '/early/initialization' },
-        { text: '配置组件库', link: '/early/deploy-vant' },
-        { text: '配置适配插件', link: '/early/deploy-screen-adaptation' },
-        { text: '配置网络请求插件', link: '/early/deploy-axios' },
-        { text: '模板页面开发', link: '/early/layout' },
-
+        { text: '项目介绍', link: '/preparation/introduction' },
+        { text: '项目创建', link: '/preparation/initialization' },
+        { text: '路由配置', link: '/preparation/router-config' },
+        { text: 'Pinia配置', link: '/preparation/state-config' },
+        { text: '代码规范配置', link: '/preparation/code-style' },
+        { text: '封装网络请求', link: '/preparation/network-request' },
+        { text: '项目路由设计', link: '/preparation/router-design' },
+        { text: '项目样式配置', link: '/preparation/style-config' },
+        { text: 'DevTools安装', link: '/preparation/devtools-install' },
       ]
     },
     {
-      text: "登录页",
+      text: "首页模块",
       children: [
-        { text: '渲染登录组件', link: '/middle/login-render-base' },
-        { text: '渲染登录头部', link: '/middle/login-render-header' },
-        { text: '渲染登录表单', link: '/middle/login-render-form' },
-        { text: '添加校验规则', link: '/middle/login-form-rules' },
-        { text: '实现登录方法', link: '/middle/login-form-function' },
-        { text: '存储token到vuex', link: '/middle/login-token-vuex' },
-        { text: '持久化存储token', link: '/middle/login-token-storage' },
-        { text: '全局loading效果', link: '/middle/login-global-loading' },
-        { text: '全局token认证', link: '/middle/login-global-auth' }
+        { text: '顶部通栏布局', link: '/home/devtools-install' },
+        { text: '头部布局', link: '/home/devtools-install' },
+        { text: '底部布局', link: '/home/devtools-install' },
+        { text: '抽取导航组件', link: '/home/devtools-install' },
+        { text: '导航组件数据填充', link: '/home/devtools-install' },
+        { text: '创建分类页面', link: '/home/devtools-install' },
+        { text: '控制导航下拉菜单显示隐藏', link: '/home/devtools-install' },
+        { text: '实现吸顶导航(传统)', link: '/home/devtools-install' },
+        { text: '实现吸顶导航(工具库)', link: '/home/devtools-install' },
+        { text: '左侧分类结构渲染', link: '/home/devtools-install' },
+        { text: '实现左侧分类列表商品推荐', link: '/home/devtools-install' },
+        { text: '实现左侧分类品牌推荐', link: '/home/devtools-install' },
+        { text: '实现左侧分类骨架效果', link: '/home/devtools-install' },
+        { text: '首页轮播图布局', link: '/home/devtools-install' },
+        { text: '首页轮播图渲染结构', link: '/home/devtools-install' },
+        { text: '首页轮播图逻辑封装', link: '/home/devtools-install' },
+        { text: '封装面板组件', link: '/home/devtools-install' },
+        { text: '实现新鲜好物', link: '/home/devtools-install' },
+        { text: '实现人气推荐', link: '/home/devtools-install' },
+        { text: '实现数据懒加载', link: '/home/devtools-install' },
+        { text: '实现面板骨架效果', link: '/home/devtools-install' },
+        { text: '实现热门品牌', link: '/home/devtools-install' },
+        { text: '实现产品区块', link: '/home/devtools-install' },
+        { text: '实现图片懒加载', link: '/home/devtools-install' },
+        { text: '实现最新专题', link: '/home/devtools-install' },
       ]
     },
     {
-      text: "首页",
+      text: "分类模块",
       children: [
-        { text: '渲染首页组件', link: '/middle/home-render-base' },
-        { text: '频道列表页面', link: '/middle/home-channels-static' },
-        { text: '渲染频道列表', link: '/middle/home-channels-dynamic' },
-        { text: '封装文章列表', link: '/middle/home-article-list' },
-        { text: '获取文章列表数据', link: '/middle/home-article-list-data' },
-        { text: '封装channelId属性', link: '/middle/home-article-list-channelid' },
-        { text: '封装文章列表项', link: '/middle/home-article-list-item' },
-        { text: '文章列表上拉加载', link: '/middle/home-article-pullload' },
-        { text: '文章列表下拉刷新', link: '/middle/home-article-pullrefresh' },
-        { text: '图片懒加载', link: '/middle/home-article-lazyload' },
-        { text: '格式化时间', link: '/middle/home-article-dateformat' },
-        { text: '展示反馈面板', link: '/middle/home-article-feedback-pannel' },
-        { text: '渲染一级反馈', link: '/middle/home-article-feedback-first' },
-        { text: '渲染二级反馈', link: '/middle/home-article-feedback-second' },
-        { text: '指定面板挂载位置', link: '/middle/home-article-pannel-position' },
-        { text: '设置不感兴趣文章', link: '/middle/home-article-not-interesting' },
-        { text: '渲染频道管理', link: '/middle/home-channel-render' },
-        { text: '渲染更多频道', link: '/middle/home-channel-more' },
-        { text: '实现频道添加', link: '/middle/home-channel-add' },
-        { text: '实现频道删除', link: '/middle/home-channel-minus' },
-        { text: '重置编辑状态', link: '/middle/home-channel-reset' },
-        { text: '频道点击联动', link: '/middle/home-channel-contact' }
+        { text: '渲染函数', link: '/category/devtools-install' },
+        { text: '实现面包屑导航组件', link: '/category/devtools-install' },
+        { text: '实现面包屑导航动画', link: '/category/devtools-install' },
+        { text: '批量注册组件', link: '/category/devtools-install' },
+        { text: '一级分类-轮播图展示', link: '/category/devtools-install' },
+        { text: '一级分类-展示二级分类列表', link: '/category/devtools-install' },
+        { text: '一级分类-实现推荐商品布局', link: '/category/devtools-install' },
+        { text: '一级分类-实现推荐商品渲染', link: '/category/devtools-install' },
+        { text: '路由切换页面滚动至顶部', link: '/category/devtools-install' },
+        { text: '二级分类-筛选组件-数据渲染', link: '/category/devtools-install' },
+        { text: '二级分类-筛选组件-收集筛选条件', link: '/category/devtools-install' },
+        { text: '二级分类-筛选组件-数据更新', link: '/category/devtools-install' },
+        { text: '二级分类-筛选组件-骨架屏', link: '/category/devtools-install' },
+        { text: '封装复选框组件', link: '/category/devtools-install' },
+        { text: '二级分类-排序组件', link: '/category/devtools-install' },
+        { text: '二级分类-商品列表渲染', link: '/category/devtools-install' },
+        { text: '二级分类-商品排序与筛选', link: '/category/devtools-install' },
+        { text: '二级分类-加载更多数据', link: '/category/devtools-install' },
       ]
     },
     {
-      text: "文章搜索",
+      text: "商品详情",
       children: [
-        { text: '渲染搜索页面', link: '/middle/search-page-render' },
-        { text: '搜索框自动聚焦', link: '/middle/search-input-autofocus' },
-        { text: '输入框防抖', link: '/middle/search-input-debounce' },
-        { text: '关键词高亮', link: '/middle/search-keywords-highlight' },
-        { text: '渲染搜索历史', link: '/middle/search-listory-render' },
-        { text: '添加搜索历史', link: '/middle/search-listory-add' },
-        { text: '存储搜索历史', link: '/middle/search-listory-save' },
-        { text: '清空搜索历史', link: '/middle/search-listory-clean' },
-        { text: '跳转到搜索结果页', link: '/middle/search-result-jump' },
-        { text: '创建搜索结果页组件', link: '/middle/search-result-create' },
-        { text: '渲染搜索结果页', link: '/middle/search-result-render' },
-        { text: '搜索结果上拉加载更多', link: '/middle/search-result-pullload' },
-        { text: '关闭按钮的显示与隐藏', link: '/middle/search-result-toggle' },
+        { text: '基础布局', link: '/detail/devtools-install' },
+        { text: '渲染面包屑导航', link: '/detail/devtools-install' },
+        { text: '图片预览组件', link: '/detail/devtools-install' },
+        { text: '实现放大镜效果', link: '/detail/devtools-install' },
+        { text: '商品基本信息展示', link: '/detail/devtools-install' },
+        { text: '城市选择组件-基础布局', link: '/detail/devtools-install' },
+        { text: '城市选择组件-获取数据', link: '/detail/devtools-install' },
+        { text: '城市选择组件-交互逻辑', link: '/detail/devtools-install' },
+        { text: '规格组件-SPU与SKU', link: '/detail/devtools-install' },
+        { text: '规格组件-基础布局', link: '/detail/devtools-install' },
+        { text: '规格组件-数据渲染与选中', link: '/detail/devtools-install' },
+        { text: '规格组件-禁选效果分析', link: '/detail/devtools-install' },
+        { text: '规格组件-禁用效果实现', link: '/detail/devtools-install' },
+        { text: '规格组件通讯-默认选中', link: '/detail/devtools-install' },
+        { text: '规格组件通讯-数据回传', link: '/detail/devtools-install' },
+        { text: '商品数量选择组件', link: '/detail/devtools-install' },
+        { text: '按钮组件', link: '/detail/devtools-install' },
+        { text: '同类推荐组件', link: '/detail/devtools-install' },
+        { text: '标签页组件', link: '/detail/devtools-install' },
+        { text: '热榜组件', link: '/detail/devtools-install' },
+        { text: '详情组件', link: '/detail/devtools-install' },
+        { text: '注意事项组件', link: '/detail/devtools-install' },
+        { text: '评价组件-头部渲染', link: '/detail/devtools-install' },
+        { text: '评价组件-列表渲染', link: '/detail/devtools-install' },
+        { text: '评价组件-图片预览', link: '/detail/devtools-install' },
+        { text: '评价组件-数据排序与筛选', link: '/detail/devtools-install' },
+        { text: '分页组件-生成页码数据', link: '/detail/devtools-install' },
+        { text: '分页组件-渲染分页数据', link: '/detail/devtools-install' },
+        { text: '分页组件-关联评论列表', link: '/detail/devtools-install' },
       ]
     },
     {
-      text: "文章详情",
+      text: "登录",
       children: [
-        { text: '创建文章详情组件', link: '/middle/article-detail-create' },
-        { text: '开启props路由传参', link: '/middle/article-detail-props' },
-        { text: '渲染文章详情数据', link: '/middle/article-detail-render' },
-        { text: '关注功能', link: '/middle/article-detail-follow' },
-        { text: '取消关注', link: '/middle/article-detail-unfollow' },
-        { text: '点赞功能', link: '/middle/article-detail-like' },
-        { text: '取消点赞', link: '/middle/article-detail-unlike' },
-        { text: '创建评论组件', link: '/middle/article-detail-comment-create' },
-        { text: '渲染评论组件', link: '/middle/article-detail-comment-render' },
-        { text: '评论点赞', link: '/middle/article-detail-comment-like' },
-        { text: '评论取消点赞', link: '/middle/article-detail-comment-unlike' },
-        { text: '创建发布评论组件', link: '/middle/article-detail-pubcomment-create' },
-        { text: '底部评论按需展示', link: '/middle/article-detail-pubcomment-condition' },
-        { text: '输入框自动聚焦', link: '/middle/article-detail-pubcomment-autofocus' },
-        { text: '渲染评论的总数量', link: '/middle/article-detail-pubcomment-count' },
-        { text: '发布评论功能', link: '/middle/article-detail-pubcomment-function' },
-        { text: '平滑滚动', link: '/middle/article-detail-pubcomment-popmotion' }
+        { text: '登录-配置路由规则', link: '/login/devtools-install' },
+        { text: '登录-基础布局', link: '/login/devtools-install' },
+        { text: '登录-表单组件', link: '/login/devtools-install' },
+        { text: '登录-表单验证', link: '/login/devtools-install' },
+        { text: '消息提示组件', link: '/login/devtools-install' },
+        { text: '登录-账号密码登录', link: '/login/devtools-install' },
+        { text: '登录-手机号登录-验证码', link: '/login/devtools-install' },
+        { text: '登录-手机号登录-登录', link: '/login/devtools-install' },
+        { text: '退出登录', link: '/login/devtools-install' },
+        { text: 'QQ登录-流程分析', link: '/login/devtools-install' },
+        { text: 'QQ登录-准备工作', link: '/login/devtools-install' },
+        { text: 'QQ登录-创建登录按钮', link: '/login/devtools-install' },
+        { text: 'QQ登录-准备回调路由组件', link: '/login/devtools-install' },
+        { text: 'QQ登录-获取openid', link: '/login/devtools-install' },
+        { text: 'QQ登录-检索已绑定账号', link: '/login/devtools-install' },
+        { text: 'QQ登录-绑定已有账号', link: '/login/devtools-install' },
+        { text: 'QQ登录-绑定新注册账号', link: '/login/devtools-install' },
+      ]
+    },
+    {
+      text: "购物车",
+      children: [
+        { text: '购物车功能分析', link: '/cart/devtools-install' },
+        { text: '加入购物车-未登录', link: '/cart/devtools-install' },
+        { text: '头部购物车-商品列表渲染-未登录', link: '/cart/devtools-install' },
+        { text: '头部购物车-删除-未登录', link: '/cart/devtools-install' },
+        { text: '头部购物车-细节处理', link: '/cart/devtools-install' },
+        { text: '购物车-基础布局', link: '/cart/devtools-install' },
+        { text: '购物车-数据渲染-未登录', link: '/cart/devtools-install' },
+        { text: '购物车-更新商品列表-未登录', link: '/cart/devtools-install' },
+        { text: '购物车-单选-未登录', link: '/cart/devtools-install' },
+        { text: '购物车-全选-未登录', link: '/cart/devtools-install' },
+        { text: '购物车-删除-未登录', link: '/cart/devtools-install' },
+        { text: '封装确认框组件', link: '/cart/devtools-install' },
+        { text: '购物车-批量删除-清空无效-未登录', link: '/cart/devtools-install' },
+        { text: '购物车-更改商品数量-未登录', link: '/cart/devtools-install' },
+        { text: '购物车-规格数据渲染-未登录', link: '/cart/devtools-install' },
+        { text: '购物车-规格数据修改-未登录', link: '/cart/devtools-install' },
+        { text: '购物车-合并购物车-已登录', link: '/cart/devtools-install' },
+        { text: '购物车-购物车列表-已登录', link: '/cart/devtools-install' },
+        { text: '购物车-加入购物车-已登录', link: '/cart/devtools-install' },
+        { text: '购物车-删除商品-已登录', link: '/cart/devtools-install' },
+        { text: '购物车-批量删除商品-已登录', link: '/cart/devtools-install' },
+        { text: '购物车-选中状态和数量-已登录', link: '/cart/devtools-install' },
+        { text: '购物车-全选与取消全选-已登录', link: '/cart/devtools-install' },
+        { text: '购物车-修改商品规格-已登录', link: '/cart/devtools-install' },
+        { text: '清空本地购物车-退出登录', link: '/cart/devtools-install' },
+        { text: '购物车-下单结算按钮', link: '/cart/devtools-install' },
+      ]
+    },
+    {
+      text: "结算",
+      children: [
+        { text: '结算-基础布局', link: '/settlement/devtools-install' },
+        { text: '结算-渲染页面', link: '/settlement/devtools-install' },
+        { text: '结算-对话框组件封装', link: '/settlement/devtools-install' },
+        { text: '结算-收货地址-基础布局', link: '/settlement/devtools-install' },
+        { text: '结算-收货地址-添加', link: '/settlement/devtools-install' },
+        { text: '结算-收货地址-渲染', link: '/settlement/devtools-install' },
+        { text: '结算-收货地址-修改', link: '/settlement/devtools-install' },
+        { text: '结算-收货地址-切换', link: '/settlement/devtools-install' },
+        { text: '结算-提交订单', link: '/settlement/devtools-install' },
+        { text: '支付-基础布局', link: '/settlement/devtools-install' },
+        { text: '支付-信息展示', link: '/settlement/devtools-install' },
+        { text: '支付-支付流程', link: '/settlement/devtools-install' },
+        { text: '支付-跳转支付', link: '/settlement/devtools-install' },
+        { text: '支付-支付结果展示', link: '/settlement/devtools-install' },
       ]
     },
     {
       text: "个人中心",
       children: [
-        { text: '渲染个人中心', link: '/middle/profile-render' },
-        { text: '退出登录', link: '/middle/profile-logout' },
-        { text: '渲染用户编辑页面', link: '/middle/profile-user-edit-render' },
-        { text: '修改用户姓名', link: '/middle/profile-user-edit-name' },
-        { text: '修改用户生日', link: '/middle/profile-user-edit-birthday' },
-        { text: '修改用户头像', link: '/middle/profile-user-edit-avatar' }
+        { text: '个人中心-布局容器', link: '/profile/devtools-install' },
+        { text: '个人中心-基础布局', link: '/profile/devtools-install' },
+        { text: '模拟接口数据', link: '/profile/devtools-install' },
+        { text: '个人中心-我的收藏', link: '/profile/devtools-install' },
+        { text: '个人中心-菜单激活', link: '/profile/devtools-install' },
+        { text: '在vue中使用JSX', link: '/profile/devtools-install' },
+        { text: '封装XtxTabs组件', link: '/profile/devtools-install' },
+        { text: '订单管理-渲染订单标题', link: '/profile/devtools-install' },
+        { text: '订单管理-基础布局', link: '/profile/devtools-install' },
+        { text: '订单管理-列表渲染', link: '/profile/devtools-install' },
+        { text: '订单管理-条件查询', link: '/profile/devtools-install' },
+        { text: '订单管理-取消订单', link: '/profile/devtools-install' },
+        { text: '订单管理-删除订单', link: '/profile/devtools-install' },
+        { text: '订单管理-确认收货', link: '/profile/devtools-install' },
+        { text: '订单管理-查看物流', link: '/profile/devtools-install' },
+        { text: '订单详情-头部展示', link: '/profile/devtools-install' },
+        { text: '订单详情-封装步骤条组件', link: '/profile/devtools-install' },
+        { text: '订单详情-物流信息', link: '/profile/devtools-install' },
+        { text: '订单详情-商品信息', link: '/profile/devtools-install' },
+        { text: '订单详情-取消订单', link: '/profile/devtools-install' },
+        { text: '订单详情-确认收货', link: '/profile/devtools-install' },
+        { text: '订单详情-再次购买', link: '/profile/devtools-install' },
       ]
     },
-    {
-      text: "小思同学",
-      children: [
-        { text: 'websocket介绍', link: '/middle/websocket-introduce' },
-        { text: '创建聊天组件页面', link: '/middle/websocket-chat-page' },
-        { text: '动态渲染聊天消息', link: '/middle/websocket-chat-render' },
-        { text: '动态渲染用户头像', link: '/middle/websocket-avatar-render' },
-        { text: '动态添加聊天消息', link: '/middle/websocket-chat-push' },
-        { text: '安装和配置websocket', link: '/middle/websocket-install-config' },
-        { text: '创建和销毁socket实例', link: '/middle/websocket-create-destory'},
-        { text: '监听连接建立和关闭', link: '/middle/websocket-connect-listen'},
-        { text: '接收服务器的消息', link: '/middle/websocket-message-receive'},
-        { text: '向服务器发送消息', link: '/middle/websocket-message-send'},
-        { text: '自动滚动到底部', link: '/middle/websocket-auto-scroll-bottom'}
-      ]
-    },
-    {
-      text: "后期优化",
-      children: [
-        { text: '页面权限控制', link: '/late/permission-control'},
-        { text: 'token续签', link: '/late/token-renew'},
-        { text: '项目优化', link: '/late/project-optimization'},
-        { text: '项目打包', link: '/late/build-package'}
-      ]
-    },
-
   ]
 }
 
-/** 
-⓵
-⓶
-⓷
-⓸
-⓹
-⓺
-⓻
-⓼
-⓽
+
+/*
+⓵ 
+⓶ 
+⓷ 
+⓸ 
+⓹ 
+⓺ 
+⓻ 
+⓼ 
+⓽ 
 ⓾
 */
