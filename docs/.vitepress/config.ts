@@ -2,7 +2,7 @@ export default {
   lang: 'en-US',
   title: 'bunnyfairy',
   description: 'bunnyfairy technical documentation',
-  base: "/BunnyFairy",
+  base: "/",
   // markdown文件设置
   markdown: {
     lineNumbers: true
