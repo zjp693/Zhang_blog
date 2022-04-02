@@ -11,7 +11,7 @@ export default {
     // 设置文档所在的文件夹
     docsDir: 'docs',
     // 是否展示 可编辑文档
-    editLinks: true,
+    // editLinks: true,
     // 搜索插件
     algolia: {
       apiKey: 'c57105e511faa5558547599f120ceeba',
