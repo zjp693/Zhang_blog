@@ -1,7 +1,12 @@
-import { createApp } from 'vue'
-import App from './App.vue'
+import { createApp } from "vue";
+
+import App from "./App.vue";
+import router from "./route";
+import store from "./stores";
+
 const app = createApp(App);
-import router from "@/routes/indexRouter.js";
-import "normalize.css"
-app.use(router)
-app.mount('#app');
+
+app.use(store);
+app.use(router);
+
+app.mount("#app");
