@@ -1,7 +1,7 @@
 export default {
   lang: 'en-US',
-  title: 'bunnyfairy',
-  description: 'bunnyfairy technical documentation',
+  title: 'zhang_Blog',
+  description: 'zhang_Blog technical documentation',
   base: "/Zhang_blog",
   // markdown文件设置
   markdown: {
@@ -19,10 +19,10 @@ export default {
     },
     // 顶部导航
     nav: [
-      { text: 'Guide', link: '/', activeMatch: '^/$|^/guide/' },
+      { text: '前端', link: '/', activeMatch: '^/$|^/guide/' },
       {
-        text: 'Config Reference',
-        link: '/config/basics',
+        text: '算法',
+        link: '/preparation/01_promise',
         activeMatch: '^/config/'
       }
     ],
