@@ -9,7 +9,7 @@
   border-left-width: 0.5rem;
   border-left-style: solid;
   border-bottom-right-radius: 5px;
-  border-top-right-radius: 5px; 
+  border-top-right-radius: 5px;
 }
 .custom-block::before {
   position: absolute;
@@ -19,7 +19,7 @@
   height: 25px;
   text-align: center;
   line-height: 24px;
-  font-family: 'Dosis', 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+  font-family: "Dosis", "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
   font-weight: bolder;
   font-size: 18px;
   color: #fff;
@@ -41,14 +41,13 @@
   background-color: #f7f7f7;
 }
 .custom-block.tip .custom-block-title {
-  color: var(--c-brand)
+  color: var(--c-brand);
 }
 .custom-block.tip::before {
   content: var(--c-tip);
   background-color: var(--c-brand);
 }
 /* end tip */
-
 
 /* warning */
 .custom-block.warning {
@@ -63,7 +62,7 @@
   content: var(--c-warn);
   /* font-size: 23px;
   line-height: 26px; */
-  background-color:#c4a301;
+  background-color: #c4a301;
 }
 
 /* end warning */
@@ -79,7 +78,7 @@
 }
 .custom-block.info::before {
   content: var(--c-info);
-  background-color:#476582;
+  background-color: #476582;
 }
 
 /* end info */
@@ -99,19 +98,29 @@
 
 /* end danger */
 
-
-.custom-block.tip, 
-.custom-block.info, 
-.custom-block.warning, 
+.custom-block.tip,
+.custom-block.info,
+.custom-block.warning,
 .custom-block.danger {
   overflow-x: initial !important;
 }
 
-
-
 #main-title {
-  background: -webkit-linear-gradient(315deg,#42d392 25%,#647eff);
+  background: -webkit-linear-gradient(315deg, #42d392 25%, #647eff);
   background-clip: text;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent
+  -webkit-text-fill-color: transparent;
+}
+
+.figure .image {
+  border-radius: 50% !important;
+  display: inline-block;
+  overflow: hidden;
+  line-height: 1;
+  vertical-align: middle;
+  background-color: #fefefe;
+  border-radius: 6px;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 1px #d2d3d3;
+  border: 1px solid #d0d7de !important;
 }
