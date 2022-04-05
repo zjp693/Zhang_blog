@@ -590,11 +590,12 @@ function App() {
 
 <span style="color: skyblue">期望的结果如下 ↓</span>
 
-<img src="https://raw.githubusercontent.com/zjp693/Zhang_blog/main/docs/public/images/04_React%E7%AC%94%E8%AE%B0.assets/28.png" width="65%" align="left"/>
+<img src="https://raw.githubusercontent.com/zjp693/Zhang_blog/main/docs/public/images/04_React%E7%AC%94%E8%AE%B0.assets/28.png" width="65%" />
 
 <span style="color: skyblue">实际的结果如下 ↓</span>
 
-<img src="https://raw.githubusercontent.com/zjp693/Zhang_blog/main/docs/public/images/04_React%E7%AC%94%E8%AE%B0.assets/29.png" width="65%" align="left"/>
+<img src="https://raw.githubusercontent.com/zjp693/Zhang_blog/main/docs/public/images/04_React%E7%AC%94%E8%AE%B0.assets/29.png" width="65%" />
+
 
 ```react
 // src/App.js
