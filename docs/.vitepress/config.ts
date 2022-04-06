@@ -44,5 +44,11 @@ function getGuideSidebar() {
         { text: '4.React笔记', link: '/preparation/04_React笔记' },
       ]
     },
+    {
+      text: "算法学习",
+      children: [
+        { text: '4.React笔记', link: '/preparation/04_React笔记' },
+      ]
+    },
   ]
 }

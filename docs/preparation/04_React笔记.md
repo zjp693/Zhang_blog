@@ -30,7 +30,7 @@ React 是一个开源的 JavaScript 库，用于构建 web 应用中的视图层
 
 React 允许开发人员将用户界面代码和逻辑代码进行完美融合，以更加灵活的方式创建用户界面。
 
-```react
+```jsx
 function Welcome(props) {
   return <h1>Hello, {props.name}</h1>;
 }
@@ -74,7 +74,7 @@ react-native-web：只包含构建移动端应用的方法。
 
 引入`react`后，window对象下会多出一个`React`的对象,对象下面的`createElement`方法用于创建元素
 
-```react
+```jsx
 //type:标签名称、字符串
 // props:元素属性，对象，无属性填入null 
 //childeren:子元素，普通文本或creaateElement 方法返回的元素对象
@@ -100,7 +100,7 @@ ReactDOM.render(element, container)
 <div id="root"></div>
 ```
 
-```react
+```jsx
 ReactDOM.render(button, document.getElementById("root"))
 ```
 
@@ -116,7 +116,7 @@ ReactDOM.render(button, document.getElementById("root"))
 
 ##### 1. text
 
-```react
+```jsx
 function App() {
   const [username, setUsername] = React.useState("");
   return (
@@ -131,7 +131,7 @@ function App() {
 
 ##### 2. password
 
-```react
+```jsx
 // 优化前
 function App() {
   const [formState, setFormState] = React.useState({
@@ -153,7 +153,7 @@ function App() {
 }
 ```
 
-```react
+```jsx
 // 优化后
 function App() {
   const [formState, setFormState] = React.useState({
@@ -177,7 +177,7 @@ function App() {
 
 ##### 3. textarea
 
-```react
+```jsx
 function App() {
   const [formState, setFormState] = React.useState({
     biography: "",
@@ -194,7 +194,7 @@ function App() {
 
 ##### 4. select
 
-```react
+```jsx
 function App() {
   const [formState, setFormState] = React.useState({
     transport: "",
@@ -221,7 +221,7 @@ function App() {
 
 ##### 5. radio
 
-```react
+```jsx
 function App() {
   const [formState, setFormState] = React.useState({
     size: "",
@@ -249,7 +249,7 @@ checkbox 单独使用，比如是否同意协议、是否记住密码、是否�
 
 当前的需求是查看用户是否同意了网站协议。
 
-```react
+```jsx
 function App() {
   const [formState, setFormState] = React.useState({
     agree: false,
@@ -280,7 +280,7 @@ function App() {
 
 当前的需求是使用模拟爱好数组生成用户界面，当用户选择爱好后，存储用户选择的爱好ID。
 
-```react
+```jsx
 // 模拟数据 爱好数组
 const data = [
   { id: 1, title: "足球" },
@@ -332,7 +332,7 @@ function App() {
 
 ##### 7. submit
 
-```react
+```jsx
 function App() {
   const [formState, setFormState] = React.useState({
     username: "",
@@ -363,7 +363,7 @@ function App() {
 
 ##### 8. reset
 
-```react
+```jsx
 const initialState = {
   username: "",
 };
@@ -400,7 +400,7 @@ function App() {
 
 通过 useRef 方法可以实现 DOM 对象的获取。
 
-```react
+```jsx
 import { useRef } from 'react';
 
 function App () {
@@ -414,7 +414,7 @@ function App () {
 
 通过 forwardRef 方法可以实现子组件中 DOM 对象的获取。
 
-```react
+```jsx
 // src/App.js
 import { useEffect, useRef } from "react";
 import Message from "./Message";
@@ -430,7 +430,7 @@ function App() {
 export default App;
 ```
 
-```react
+```jsx
 // src/Message.js
 import { forwardRef } from "react";
 
@@ -446,7 +446,7 @@ export default forwardRef(Message);
 
 在 React 中受控表单组件使用起来很方便但也相对复杂，如果表单本身比较简单也可以使用非受控表单组件，非受控表单组件就是表单控件不和组件状态进行绑定，就使用原生的表单 DOM 对象存储用户输入的值。
 
-```react
+```jsx
 function App() {
   const usernameRef = React.useRef();
   const onSubmitHandler = (event) => {
@@ -488,7 +488,7 @@ function App() {
 import "./styles.css";
 ```
 
-```react
+```jsx
 // src/App.js
 function App() {
   return <button class="button">button</button>;
@@ -499,7 +499,7 @@ function App() {
 
 通过 style 属性为元素添加行内样式，在样式参与逻辑时行内样式具有高度优势。
 
-```react
+```jsx
 import { useState } from "react";
 
 function App() {	
@@ -548,7 +548,7 @@ export default App;
 }
 ```
 
-```react
+```jsx
 // App.js
 import styles from "./App.module.css";
 
@@ -566,13 +566,13 @@ function App() {
 npm install classnames
 ```
 
-```react
+```jsx
 // 注意: classNames 方法的参数个数没有限制
 classNames('foo', { bar: true }); // => 'foo bar'
 classNames({ 'bar': true }); // => 'foo-bar'
 ```
 
-```react
+```jsx
 import classNames from "classnames";
 
 function App() {
@@ -597,7 +597,7 @@ function App() {
 <img src="https://raw.githubusercontent.com/zjp693/Zhang_blog/main/docs/public/images/04_React%E7%AC%94%E8%AE%B0.assets/29.png" width="65%" />
 
 
-```react
+```jsx
 // src/App.js
 import { useState } from "react";
 import Modal from "./Modal";
@@ -616,7 +616,7 @@ function App() {
 export default App;
 ```
 
-```react
+```jsx
 // src/Modal.js
 import styles from "./Modal.module.css";
 
@@ -661,7 +661,7 @@ export default Modal;
 <div id="portal-root"></div>
 ```
 
-```react
+```jsx
 // src/Modal.js
 import styles from "./Modal.module.css";
 import ReactDOM from "react-dom";
@@ -687,7 +687,7 @@ export default Modal;
 
 需求：记录组件渲染次数
 
-```react
+```jsx
 import React, { useEffect, useRef, useState } from 'react'
 
 function App() {
@@ -716,7 +716,7 @@ export default App
 
 答案是不能,因为通过useState 方法声明的是组件状态，组件状态被改变会触发试图更新，一旦视图更新就要通过count记录更新次数，count被改变又会触发视图更新，从而引发组件的无限次循环渲染。
 
-```react
+```jsx
 import { useEffect, useState } from "react";
 
 function App() {
@@ -742,7 +742,7 @@ function App() {
 
 问题代码实例
 
-```react
+```jsx
 //src/App.js
 import React, { useEffect, useState } from 'react'
 import ShowName from "./ShowName";
@@ -767,7 +767,7 @@ function App() {
 export default App
 ```
 
-```react
+```jsx
 // src/ShowName.js
 import { useEffect } from "react";
 
@@ -787,7 +787,7 @@ export default ShowName;
 
 memo 方法可以为组件添加输入数据（props）的对比逻辑，如果当前渲染时的输入数据和上一次渲染时的输入数据一致，阻止组件重新渲染。
 
-```react
+```jsx
 import { memo } from "react";
 
 export default memo(ShowName);
@@ -797,13 +797,13 @@ memo方法内部采用的是浅层比较，比较基本数据类型的值是否�
 
 以下代码在父组件每次重新渲染时都会生成新的person对象,memo方法在内部比较时得到的都是不同的对象，所以每次子组件也会跟着重新渲染。
 
-```react
+```jsx
 <ShowName person={{ name: "张三" }} />
 ```
 
 memo方法的第二个参数即为比较函数，可以通过它解决以上的问题。比较函数的第二个参数为prevProps,比较函数的第二个参数为nextProps,比较函数返回false组件重新渲染。
 
-```react
+```jsx
 export default memo(ShowName, compareFunction);
 
 function compareFunction(prevProps, nextProps) {
@@ -818,7 +818,7 @@ function compareFunction(prevProps, nextProps) {
 
 问题代码实例
 
-```react
+```jsx
 import { useEffect, useState } from "react";
 
 function App() {
@@ -868,7 +868,7 @@ export default App;
 
 通过`useCallback`方法可以缓存函数，使用组件每次重新渲染都返回相同的函数实例，也可以指定某个状态变化后返回新的函数实例。
 
-```react
+```jsx
 import { useCallback } from "react";
 
 function App () {
@@ -890,7 +890,7 @@ function App () {
 
 ### 3.8.2 代码示例
 
-```react
+```jsx
 // src/App.js
 import { useRef } from "react";
 import Message from "./Message";
@@ -911,7 +911,7 @@ function App() {
 export default App;
 ```
 
-```react
+```jsx
 // src/Messages.js
 import { forwardRef, useImperativeHandle, useState } from "react";
 
@@ -948,7 +948,7 @@ React允许开发者创建自定义钩子函数用于向组件中添加功能
 
 用于将组件状态实时同步到本地存储localStorage。
 
-```react
+```jsx
 //src/localStorage.js
 import { useState } from "react";
 
@@ -976,7 +976,7 @@ export function useLocalStorage(key, initialValue) {
 }
 ```
 
-```react
+```jsx
 //src/App.js
 import React from 'react'
 import { useLocaStorang } from './localStorage'
@@ -999,7 +999,7 @@ export default App
 
 ### 3.9.3 useToggle
 
-```react
+```jsx
 import React, { useCallback, useState } from 'react'
 
 function App() {
@@ -1026,7 +1026,7 @@ export default App
 
 用于执行异步代码并为异步过程添加状态。
 
-```react
+```jsx
 import { useCallback, useEffect, useState } from "react";
 
 export default function useAsync(asyncFunction, immediate = false) {
@@ -1060,7 +1060,7 @@ export default function useAsync(asyncFunction, immediate = false) {
 }
 ```
 
-```react
+```jsx
 import useAsync from "./useAsync";
 
 const myFunction = () => {
@@ -1093,7 +1093,7 @@ export default App;
 
 用于检测元素的鼠标移入移除操作。
 
-```react
+```jsx
 import { useEffect, useRef, useState } from "react";
 
 export default function useHover() {
@@ -1117,7 +1117,7 @@ export default function useHover() {
 }
 ```
 
-```react
+```jsx
 import useHover from "./useHover";
 
 function App() {
@@ -1132,7 +1132,7 @@ export default App;
 
 用于获取浏览器的窗口大小。
 
-```react
+```jsx
 import { useEffect, useState } from "react";
 
 export default function useWindowSize() {
@@ -1155,7 +1155,7 @@ export default function useWindowSize() {
 }
 ```
 
-```react
+```jsx
 import useWindowSize from "./useWindowSize";
 
 function App() {
@@ -1176,7 +1176,7 @@ export default App;
 
 首先看一段没有该钩子函数的代码，需求是在点击按钮时获取id值为1的任务对象。
 
-```react
+```jsx
 import axios from "axios";
 import { useReducer } from "react";
 
@@ -1216,7 +1216,7 @@ export default App;
 
 `npm install use-reducer-async`
 
-```react
+```jsx
 import { useReducerAsync } from "use-reducer-async";
 import axios from "axios";
 
@@ -1267,7 +1267,7 @@ export default App;
 
 通过 `Children.only` 方法可以限制组件标签只接收一个子元素。
 
-```react
+```jsx
 import Message from "./Message";
 	
 function App() {
@@ -1281,7 +1281,7 @@ function App() {
 }
 ```
 
-```react
+```jsx
 import { Children } from "react";
 
 function Message(props) {
@@ -1300,7 +1300,7 @@ function Message(props) {
 
 通过 `Children.count` 方法可以获取组件标签传入的子元素的数量。
 
-```react
+```jsx
 import { Children } from "react";
 
 function Message(props) {
@@ -1312,7 +1312,7 @@ function Message(props) {
 
 通过 `Children.map` 方法可以对组件标签内部的子元素进行转换操作。
 
-```react
+```jsx
 function App() {
   return (
     <Message>
@@ -1341,7 +1341,7 @@ function App() {
 }
 ```
 
-```react
+```jsx
 import { Children } from "react";
 
 function Message(props) {
@@ -1358,7 +1358,7 @@ function Message(props) {
 
 通过 `Children.toArray` 方法可以将 `props.children` 转换为数组类型，以保证 `Children.map` 方法永远有用。
 
-```react
+```jsx
 // src/App.js
 import ImageToggle from "./ImageToggle";
 
@@ -1390,7 +1390,7 @@ function App() {
 }
 ```
 
-```react
+```jsx
 // src/ImageToggle.js
 import { useEffect, useState, Children } from "react";
 
