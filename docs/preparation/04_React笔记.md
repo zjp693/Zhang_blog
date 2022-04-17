@@ -2016,7 +2016,7 @@ export default AuthGuardOutlet;
 
 服务端渲染（server-side rendering）是指数据和HTML模板在服务端的进行拼接，完成拼接后发送到客户端的进行解析。
 
-<img src="../../../../React笔记/assets/next/02.png" />
+<img src="https://raw.githubusercontent.com/zjp693/Zhang_blog/main/docs/public/images/04_React%E7%AC%94%E8%AE%B0.assets/next/02.png" />
 
 
 
