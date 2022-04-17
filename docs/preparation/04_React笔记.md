@@ -1422,3 +1422,1144 @@ function ImageToggle(props) {
 
 ### 3.11 Context
 
+```
+
+```
+
+## 5.React路由v6
+
+### 5.1 客户端路由概述
+
+在 Web 应用中，客户端路由就是导航，就是 URL 地址与页面之间的对应关系，可以实现点击不同的链接跳转到不同的页面。
+
+传统 Web 应用的中的路由是由 a 标记实现的，通过 a 标记可以实现在不同的 HTML 文件之间进行跳转。
+
+在 React 应用中，只有一个 HTML 文件，React 应用通过不同的组件模拟不同的页面，所以 React 应用中的路由要实现的是在不同的组件之间进行跳转。
+
+<img src="https://raw.githubusercontent.com/zjp693/Zhang_blog/main/docs/public/images/04_React%E7%AC%94%E8%AE%B0.assets/41.png" align="left" width="50%"/>
+
+<img src="https://raw.githubusercontent.com/zjp693/Zhang_blog/main/docs/public/images/04_React%E7%AC%94%E8%AE%B0.assets/42.gif" align="left" width="45%"/>
+
+```bash
+	npm install react-router-dom
+```
+
+### 5.2 基本使用
+
+需求：为应用创建首页和关于我们两个页面。
+
+1. 创建页面级路由组件
+
+   `src/pages/Home.js`
+
+   ```react
+   function Home() {
+     return <div>欢迎来到首页 🌶🌶🌶 </div>;
+   }
+   export default Home;
+   ```
+
+   `src/pages/News.js`
+
+   ```react
+   function News() {
+     return <div>欢迎来到关于新闻页 😁😁😁</div>;
+   }
+   export default News;
+   ```
+
+   `src/pages/Error.js`
+
+   ```react
+   function Error() {
+     return <div>页面走丢了 😭😭😭</div>;
+   }
+   export default Error;
+   ```
+
+2. 配置路由规则
+
+   `src/App.js`
+
+   ```react
+   import { BrowserRouter, Routes, Route } from "react-router-dom";
+   import News from "./pages/News";
+   import Home from "./pages/Home";
+   
+   function App() {
+     // 注意: 在 v6 版本中，一旦路由规则匹配成功，则不再继续向后匹配，所以不再需要使用 exact 属性
+     return (
+       <BrowserRouter>
+         <Routes>
+           <Route path="/" element={<Home />} />
+           <Route path="/news" element={<News />} />
+         </Routes>
+       </BrowserRouter>
+     );
+   }
+   
+   export default App;
+   ```
+
+3. 为应用添加用于跳转页面的链接地址
+
+   ```react
+   import { Link } from "react-router-dom";
+   
+   function App() {
+     // 注意: react-router-dom 提供的组件都必须被 BrowserRouter 组件包裹, 包括 Link 组件
+     return (
+       <BrowserRouter>
+         <Link to="/">Home</Link>
+         <Link to="/news">News</Link>
+       </BrowserRouter>
+     );
+   }
+   ```
+
+### 5.3 NavLink 组件
+
+link组件是用于生成普通链接的组件，导航链接应该使用NavLink组件，当前链接集激活时，链接元素身上会自动添加active激活类名。
+
+```react
+<NavLink to="/">
+  Home
+</NavLink>
+<NavLink to="/news">
+  News
+</NavLink>
+```
+
+可以通过以下方式更改默认的激活类名。
+
+```react
+    const activeClassName = ({ isActive }) => (isActive ? "on" : "off");
+
+    <NavLink to="/" className={activeClassName}>
+      Home
+    </NavLink>
+    <NavLink to="/about" className={activeClassName}>
+      News
+    </NavLink>
+```
+
+通过同样的方式也可以为导航链接添加内样式
+
+```react
+<NavLink to="/" style={({ isActive }) => ({ color: isActive ? "red" : "blue" })}>
+  Home
+</NavLink>
+```
+
+### 5.4 404 与 Navigate
+
+在路由规则配置的最后，可以使用`*`号匹配不存在的路由规则，匹配以后可以指定表示404的页面组件
+
+```react
+import React from 'react'
+import { BrowserRouter,Route,Routes } from 'react-router-dom'
+import Error from './pages/Error'
+function App() {
+  return <>
+    <BrowserRouter>
+    <Routes>
+      <Route path="*" element={<Error/>}></Route>
+    </Routes>
+   </BrowserRouter>
+   </>
+}
+
+export default App
+```
+
+如果不想展示404，也可以将路由重定向到应用中已经存在的页面路由组件。
+
+```react
+import { Navigate } from "react-router-dom";
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+```
+
+### 5.5嵌套路由
+
+嵌套路由可以理解为二级路由乃至三级路由. 就是在路由组件中还包含路由匹配组件。
+
+<img src="https://raw.githubusercontent.com/zjp693/Zhang_blog/main/docs/public/images/04_React%E7%AC%94%E8%AE%B0.assets/40.png" align="left" width="55%"/>
+
+1. 配置新闻页面中的二级路由规则
+
+   `src/App.js`
+
+   ```react
+   import News from "./pages/News";
+   import InnerNews from "./pages/InnerNews";
+   import OuterNews from "./pages/OuterNews";
+   
+   function App() {
+     return (
+       <BrowserRouter>
+         <Routes>
+           <Route path="/news" element={<News />}>
+             <Route path="inner" element={<InnerNews />} />
+             <Route path="outer" element={<OuterNews />} />
+           </Route>
+         </Routes>
+       </BrowserRouter>
+     );
+   }
+   ```
+
+2. 在一级路由页面组件 ( 新闻页面组件 ) 中放置路由插槽、配置跳转链接
+
+   `src/pages/News.js`
+
+   ```react
+   import { NavLink, Outlet } from "react-router-dom";
+   
+   function News() {
+     return (
+       <div>
+         <p>欢迎来到关于新闻页 😁😁😁</p>
+         <NavLink to="/news/inner">国内新闻</NavLink>
+         <NavLink to="/news/outer">国际新闻</NavLink>
+         <Outlet />
+       </div>
+     );
+   }
+   ```
+
+### 5.6索引路
+
+由显示的二级路由，比如上述案例中，当进入新闻页面时二级路由组件所在区域是空白的，该缺陷就可以通过索引路由补救。
+
+`src/App.js`
+
+```react
+function App() {
+  // 注意: 索引路由不能有 path
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/news" element={<News />}>
+          <Route index element={<InnerNews />} />
+          <Route path="inner" element={<InnerNews />} />
+          <Route path="outer" element={<OuterNews />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+}
+```
+
+### 5.7 编程式导航
+
+通过事件的方式进行跳转。
+
+```react
+import { useNavigate } from "react-router-dom";
+
+function Home() {
+  const navigate = useNavigate();
+  return <button onClick={() => navigate("/news")}>News</button>;
+}
+```
+
+### 5.8 路由参数
+
+通过路由参数可以实现在不同的页面组件之间跳转时携带数据。
+
+比如在文章列表页面中，点击某一篇文章跳转到文章详情页面，此时就需要将被点击的那篇文章的 id 传递到文章详情页面。
+
+在应用中会有很多篇文章，但是文章详情页面组件只有一个，可以将它理解为文章详情的模板页面，在跳转到这个模板页面时，需要将文章id传进来，在模板页面中需要通过 id 获取详情，从而展示详情数据。
+
+1. 添加路由规则并指定跳转到该路由时需要传递参数
+
+   `src/App.js`
+
+   ```react
+   import Detail from "./pages/Detail";
+   
+   function App() {
+     return (
+       <BrowserRouter>
+         <Routes>
+           <Route path="/detail/:id" element={<Detail />} />
+         </Routes>
+       </BrowserRouter>
+     );
+   }
+   ```
+
+2. 在实现跳转的路由链接中传递参数
+
+   `src/pages/Home.js`
+
+   ```react
+   import { Link } from "react-router-dom";
+   
+   function Home() {
+     return (
+       <ul>
+         <li>
+           <Link to="/detail/1">老旧小区改造, 这三区名单来了!</Link>
+         </li>
+         <li>
+           <Link to="/detail/2">穿鞋把脚放列车座位上, 韩总统候选人尹锡悦引发网友批..</Link>
+         </li>
+       </ul>
+     );
+   }
+   ```
+
+3. 在目标跳转页面组件接收路由参数
+
+   `src/pages/Detail.js`
+
+   ```react
+   import { useParams } from "react-router-dom";
+   
+   function Detail() {
+     const { id } = useParams();
+     return <div>Detail Page {id}</div>;
+   }
+   
+   export default Detail;
+   ```
+
+### 5.9 查询参数
+
+1. 定义路由时不需要加路由参数占位符
+
+   `src/App.js`
+
+   ```react
+   function App() {
+     return (
+       <BrowserRouter>
+         <Routes>
+           <Route path="/detail" element={<Detail />} />
+         </Routes>
+       </BrowserRouter>
+     );
+   }
+   ```
+
+2. 在链接跳转时添加参数
+
+   `src/pages/Home.js`
+
+   ```react
+   import { Link } from "react-router-dom";
+   
+   function Home() {
+     return (
+       <ul>
+         <li>
+           <Link to="/detail?id=1">老旧小区改造, 这三区名单来了!</Link>
+         </li>
+         <li>
+           <Link to="/detail?id=2">穿鞋把脚放列车座位上, 韩总统候选人尹锡悦引发网友批..</Link>
+         </li>
+       </ul>
+     );
+   }
+   ```
+
+3. 在目标跳转页面组件接收路由参数
+
+   `src/pages/Detail.js`
+
+   ```react
+   import { useSearchParams } from "react-router-dom";
+   
+   function Detail() {
+     const [searchParams] = useSearchParams();
+     return <div>Detail Page {searchParams.get("id")}</div>;
+   }
+   
+   export default Detail;
+   ```
+
+### 5.10 路由组件懒加载
+
+默认情况下应用中所有的组件都被打包到了同一个文件中，就是说应用初始加载时就加载了所有的组件，这样会导致初始加载应用时间长用户体验差。
+
+解决办法就是在打包应用时以页面组件为单位，将不同的页面组件打包到不同的文件中，初始加载时只加载用户访问的页面组件。
+
+1. 通过 lazy, import 异步加载组件
+
+   `src/App.js`
+
+   ```react
+   import { lazy } from 'react';
+   
+   const Home = lazy(() => import(/* webpackChunkName: "Home" */ "./pages/Home"));
+   ```
+
+   通过 import 方法动态导入模块时，webpack 会将导入的模块拆分成单独的文件。
+
+   webpackChunkName 定义拆分文件名称。
+
+2. 在调用异步加载的组件时，组件的外面必须包裹 Suspense 组件，通过 Suspense 组件可以指定组件加载过程中的等待 UI。
+
+   `src/App.js`
+
+   ```react
+   import { Suspense } from "react";
+   
+   function App() {
+     return (
+       <BrowserRouter>
+         <Routes>
+           <Route
+             path="/"
+             element={
+               <Suspense fallback={<div>loading...</div>}>
+                 <Home />
+               </Suspense>
+             }
+           />
+         </Routes>
+       </BrowserRouter>
+     );
+   }
+   ```
+
+3. 封装 Loadable 组件以复用 Suspense 组件
+
+   `src/common/Loadable.js`
+
+   ```react
+   import { Suspense } from "react";
+   
+   function Loadable(Component) {
+     return function (props) {
+       return (
+         <Suspense fallback={<div>loading...</div>}>
+           <Component {...props} />
+         </Suspense>
+       );
+     };
+   }
+   
+   export default Loadable;
+   ```
+
+   `src/App.js`
+
+   ```react
+   import Loadable from "./pages/Loadable";
+   
+   const Home = Loadable(
+     lazy(() => import(/* webpackChunkName: "Home" */ "./pages/Home"))
+   );
+   
+   function App() {
+     return (
+       <BrowserRouter>
+         <Routes>
+           <Route path="/" element={<Home />}/>
+         </Routes>
+       </BrowserRouter>
+     );
+   }
+   ```
+
+### 5.11 路由守卫 单路由守卫
+
+当用户去访问那些需要鉴权以后才能进入的路由组件时，需要先通过路由守卫对其进行鉴权，只有通过才允许用户进入，否则进行重定向。
+
+1. 定义执行鉴权的钩子函数供路由守卫进行使用
+
+   `src/common/useAuth.js`
+
+   ```react
+   import { useEffect, useState } from "react";
+   
+   function isAuth() {
+     // 模拟鉴权成功
+     return Promise.resolve();
+     // 模拟鉴权失败
+     // return Promise.reject();
+   }
+   
+   function useAuth() {
+     // 用于存储鉴权结果
+     // true 成功
+     // false 失败 (默认值)
+     const [auth, setAuth] = useState(false);
+     // 用于存储异步状态
+     // true 等待 (默认值)
+     // false 结束
+     const [loading, setLoading] = useState(true);
+     useEffect(() => {
+       // 开始鉴权
+       isAuth()
+         // 成功
+         .then(() => setAuth(true))
+         // 失败
+         .catch(() => setAuth(false))
+         // 不管成功还是失败, 都将异步状态更新为结束
+         .finally(() => setLoading(false));
+     }, []);
+     // 返回异步状态和鉴权结果
+     return { loading, auth };
+   }
+   
+   export default useAuth;
+   ```
+
+2. 创建用于实现身份验证的路由守卫组件
+
+   `src/common/AuthGuard.js`
+
+   ```react
+   import { Navigate } from "react-router-dom";
+   import useAuth from "../hooks/useAuth";
+   
+   function AuthGuard({ children }) {
+     // 调用鉴权钩子, 获取异步状态及鉴权结果22
+     const { auth, loading } = useAuth();
+     // 如果异步状态为等待, 渲染等待过程中的UI界面
+     if (loading) return <div>loading...</div>;
+     // 判断鉴权结果, 如果通过, 进入目标路由组件, 如果没通过, 重定向到执行授权的页面
+     return auth ? children : <Navigate to="/login" />;
+   }
+   
+   export default AuthGuard;
+   ```
+
+3. 对 Admin 组件，即需要鉴权以后才能访问的页面路由组件进行守卫
+
+   `src/App.js`
+
+   ```react
+   import AuthGuard from "./common/AuthGuard";
+   
+   function App() {
+     return (
+       <BrowserRouter>
+         <Routes>
+           <Route path="/admin" element={<AuthGuard><Admin /></AuthGuard>}/>
+         </Routes>
+       </BrowserRouter>
+     );
+   }
+   ```
+
+### 5.12 路由守卫 多路由守卫
+
+通过 Outlet 路由插座组件可以实现多路由守卫。
+
+`src/App.js`
+
+```react
+import Admin from "./pages/Admin";
+import AuthGuardOutlet from "./common/AuthGuardOutlet";
+
+function App() {
+  return (
+    <BrowserRouter>
+        <Route path="/admin" element={<AuthGuardOutlet />}>
+          <Route path="" element={<Admin />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+}
+```
+
+`src/common/AuthGuardOutlet.js`
+
+```react
+import { Navigate, Outlet } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
+
+function AuthGuardOutlet() {
+  // 调用鉴权钩子, 获取异步状态及鉴权结果
+  const { auth, loading } = useAuth();
+  // 如果异步状态为等待, 渲染等待过程中的UI界面
+  if (loading) return <div>loading...</div>;
+  // 判断鉴权结果, 如果通过, 渲染路由插座组件, 让 children 组件能够渲染到插座组件中
+  // 如果没通过, 重定向到执行授权的页面
+  return auth ? <Outlet /> : <Navigate to="/login" />;
+}
+
+export default AuthGuardOutlet;
+```
+
+### 5.13 滚动行为修正
+
+问题：在A页面中将页面滚动到底部，切换到B页面，此时滚动的仍然处于A页面的位置
+
+解决问题得方式就是监听路由切换行为，当路由发生切换行为时，让页面自动回到顶部。
+
+```react
+
+```
+
+## 6.服务端渲染
+
+### 6.1 概述
+
+### 6.1.1渲染概述
+
+### 1.服务端渲染SSR
+
+服务端渲染（server-side rendering）是指数据和HTML模板在服务端的进行拼接，完成拼接后发送到客户端的进行解析。
+
+<img src="../../../../React笔记/assets/next/02.png" />
+
+
+
+### 2.客户端渲染CSR
+
+客户端渲染（client-side rendering）是指数据和HTML模板在客户端的浏览器中进行拼接，拼接完成之后再追加到DOM树中供浏览器解析。
+
+images/csr.png
+
+### 3.静态生成SSG
+
+静态站点生成的（start stie grneration）是指在站点构建阶段进行数据和HTMLde模板在服务端的进行拼接，完成拼接并生成对应的静态的HTML页面。
+
+
+
+### 6.1.2 渲染发展史
+
+6.2.2 Next.js
+
+6.2.1 概述
+
+[Next.js](https://nextjs.org/) 是集成式 React 服务端渲染应用框架，用于构建 SEO 友好的 SPA 应用。
+
+```bash
+# 全局安装 next.js 脚手架工具
+npm install -g create-next-app
+# 创建 next.js 应用
+create-next-app next-tutorial
+# 启动开发服务器
+npm run dev
+```
+
+### 6.2.2 基于文件系统中的路由
+
+#### 1.路由匹配
+
+在Next.js中，页面是存储在pages文件中的React组件，组件文件名称和路由相关联。
+
+```react
+// pages/index.js ====> http://localhost:3000/
+export default function Home() {
+  return <div>首页</div>;
+}	
+```
+
+```react
+// pages/about.js ====> http://localhost:3000/about
+export default function About() {
+  return <div>关于我们</div>;
+}
+```
+
+```react
+// pages/post/index.js ====> http://localhost:3000/post
+export default function Post() {
+  return <div>这是博客索引目录</div>;
+}
+```
+
+```react
+// pages/blog/first-blog.js ====> http://localhost:3000/blog/first-post
+export default function FirstPost () {
+  return <div>这是我的第一篇博客文章</div>
+}
+```
+
+```react
+// pages/post/[pid].js ====> http://localhost:3000/post/1
+import { useRouter } from "next/router";
+
+export default function Post() {
+  const router = useRouter(); // routter.query ====> {"pid": "1"}
+}
+```
+
+```react
+// pages/post/[pid].js ====> http://localhost:3000/post/1?name=zhangsan
+import { useRouter } from "next/router";
+
+export default function Post() {
+  const router = useRouter(); // routter.query ====> {"pid": "1", "name": "张三"}
+}
+```
+
+```react
+// pages/order/[uid]/[status].js ====> http://localhost:3000/order/2/all
+import { useRouter } from "next/router";
+
+export default function Orders() {
+  const router = useRouter(); // router.query ====> {"uid": "2", "status": "all"}
+}
+```
+
+```react
+// pages/404.js ====> 自定义404页面
+export default function NotFound() {
+  return <div>这是自定义的404页面</div>;
+}
+```
+
+##### 2. 路由跳转
+
+Link组件默认进行客户端路由跳转，如果浏览器中JavaScrip被禁用则使用链接进行服务端12路由跳转
+
+Link组件中不应添加除href属性以为的属性，其余属性添加到a标签上，比如title、onClick。
+
+Link 组件通过预取(在生产中)功能自动优化应用程序以获得最佳性能。
+
+```react
+import Link from "next/link";
+
+export default function Home() {
+  return (
+    <Link href="/about">
+      <a title="关于我们">关于我们</a>
+    </Link>
+  );
+}
+```
+
+```react
+import Link from "next/link";
+
+const posts = [
+  { id: 1, title: "这是id为1的文章" },
+  { id: 2, title: "这是id为2的文章" },
+];
+
+export default function Post() {
+  return (
+    <ul>
+      {posts.map((post) => (
+        <li key={post.id}>
+          <Link href={`/post/${post.id}`}>
+            <a>{post.title}</a>
+          </Link>
+        </li>
+      ))}
+    </ul>
+  );
+}
+```
+
+```react
+import Link from "next/link";
+
+const posts = [
+  { id: 1, title: "这是id为1的文章" },
+  { id: 2, title: "这是id为2的文章" },
+];
+
+export default function Post() {
+  return (
+    <ul>
+      {posts.map((post) => (
+        <li key={post.id}>
+          <Link href={{ pathname: "/post/[pid]", query: { pid: post.id } }}>
+            <a>{post.title}</a>
+          </Link>
+        </li>
+      ))}
+    </ul>
+  );
+}
+```
+
+```react
+import { useRouter } from "next/router";
+
+export default function Home() {
+  const router = useRouter();
+  return <button onClick={() => router.push("/about")}>关于我们</button>;
+}
+```
+
+```react
+import Link from "next/link";
+
+export default function Home() {
+  const onClickHandler = (event) => {
+    alert("clicked");
+    event.preventDefault();
+  };
+  return (
+    <Link href="/about">
+      <a onClick={onClickHandler}>关于我们</a>
+    </Link>
+  );
+}
+```
+
+#### 6.2.3 API 路由
+
+通过API路由开发者可以为**客户端**应用提供的API接口。
+
+API路由的是服务端应用程序，代码将会被打包到服务端应用程序，它不会最增加客户端打包文件的体积。
+
+##### 1.基本使用
+
+```javascript
+// pages/api/index.js ====> http://localhost:3000/api
+export default function handler(req, res) {
+  // req: 请求对象
+  // res: 响应对象
+  // 对客户端进行响应
+  res.send({ msg: "API Route is running" });
+}
+```
+
+```javascript
+// pages/api/posts/index.js
+// 获取文章列表: GET  http://localhost:3000/api/posts
+// 添加文章:    POST  http://localhost:3000/api/posts
+export default function handler(req, res) {
+  switch (req.method) {
+    case "GET":
+      res.send({ msg: "客户端在获取文章列表" });
+      break;
+    case "POST":
+      res.send({ msg: "客户端在添加文章", body: req.body });
+      break;
+    default:
+      res.status(400).send({msg: "API 不存在"})
+  }
+}
+```
+
+```javascript
+// pages/api/posts/[pid].js
+// 根据pid获取文章: GET     http://localhost:3000/api/post/12
+// 根据pid删除文章: DELETE  http://localhost:3000/api/post/12
+export default function handler(req, res) {
+  switch (req.method) {
+    case "GET":
+      res.send({ msg: "客户端在根据pid获取文章", pid: req.query.pid });
+      break;
+    case "DELETE":
+      res.send({ msg: "客户端在根据pid删除文章", pid: req.query.pid });
+      break;
+  }
+}
+```
+
+```javascript
+// pages/api/posts/[...pids].js 
+// 根据pid批量删除文章: DELETE http://localhost:3000/api/posts/2/3
+// [pid].js 的匹配优先级高于 [...pid].js
+export default function handler(req, res) {
+  switch (req.method) {
+    case "DELETE":
+      res.send({ msg: "客户端在根据pid批量删除文章", pid: req.query.pid });
+  }
+}
+```
+
+##### 2. 连接数据库
+
+```javascript
+// services/dbConnection.js
+import mongoose from "mongoose";
+
+async function dbConnect() {
+  // 判断数据库是否已经连接过, 如果已经连接过, 不再重复连接
+  if (mongoose.connection.readyState === 1) return;
+  // 如果数据库没有连接过, 链接数据库
+  await mongoose.connect("mongodb://localhost:27017/test");
+}
+export default dbConnect;
+```
+
+```javascript
+// models/Post.js
+import mongoose from "mongoose";
+
+const PostSchema = new mongoose.Schema({
+  title: {
+    type: String,
+    required: [true, "标题不能为空"],
+    unique: true,
+    maxlength: [40, "标题不能超过40个字符"],
+  },
+  description: {
+    type: String,
+    required: true,
+    maxlength: [200, "描述不能超过200个字符"],
+  },
+});
+
+const Post = mongoose.models.Post || mongoose.model("Post", PostSchema);
+
+export default Post;
+```
+
+```javascript
+// pages/api/posts/index.js
+import Post from "@/models/Post";
+import dbConnect from "@/services/dbConnection";
+
+export default async function handler(req, res) {
+  await dbConnect();
+  switch (req.method) {
+    case "GET":
+      const posts = await Post.find({});
+      res.send({ success: true, posts });
+      break;
+    case "POST":
+      const post = await Post.create(req.body);
+      res.status(201).json({ success: true, post });
+      break;
+    default:
+      res.status(400).send({ success: false, error: "api 不存在" });
+  }
+}
+```
+
+```json
+// jsconfig.json
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/models/*": ["models/*"],
+      "@/services/*": ["services/*"]
+    }
+  }
+}
+```
+
+#### 6.2.4 预渲染
+
+预渲染时指在构建阶段对应程序进行编译，编译结果就是静态的HTML文件
+
+当客户端是向服务端发送请求后，服务端直接将应用构建时编译的HTML文件发送到客户端
+
+默认情况下，如果组件不通过请求获取外部数据，Next.js会在构建将其编译为静态HTML文件
+
+预渲染适用于页面内容不会发生频繁变化的场景，比如博客、新闻、电商前台、文档、营销页面等
+
+```react
+export default function About() {
+  return <div>About</div>
+}
+```
+
+##### 1. 基于页面组件的预渲染
+
+在构建阶段如果组件需要获取外部数据，在组件中要导出名为 getStaticProps 的异步方法，通过它返回组件所需数据，它会在应用的构建阶段执行。
+
+```react
+import axios from "axios";
+
+export default function Posts({ posts }) {
+  return (
+    <ul>
+      {posts.map((post) => (
+        <li key={post.id}>{post.title}</li>
+      ))}
+    </ul>
+  );
+}
+
+export async function getStaticProps() {
+  let { data } = await axios.get("https://jsonplaceholder.typicode.com/posts");
+  return {
+    props: {
+      posts: data,
+    },
+  };
+}
+```
+
+##### 2. 基于动态路由的预渲染
+
+基于动态路由的预渲染是指根据路由动态参数编译 HTML 静态文件。
+
+该路由拥有多少参数就会编译出多少静态 HTML 文件。
+
+```bash
+npm install -g json-server
+```
+
+```json
+{
+  "todos": [
+    { "id": 1, "title": "吃饭" },
+    { "id": 2, "title": "睡觉" },
+    { "id": 3, "title": "打豆豆" }
+  ]
+}
+```
+
+```bash
+json-server db.json -p 3001 -w
+```
+
+```react
+// pages/todos/[id].js
+import axios from "axios";
+import { useRouter } from "next/router";
+
+export default function Todo({ todo }) {
+  const router = useRouter();
+  if (router.isFallback) return <div>Loading...</div>;
+  return (
+    <div>
+      {todo.id} {todo.title}
+    </div>
+  );
+}
+
+// 第一步: 在构建时先获取所有路由参数
+export async function getStaticPaths() {
+  return {
+    paths: [
+      {
+        params: { id: "1" },
+      },
+      {
+        params: { id: "2" },
+      },
+    ],
+    // false 当访问没有被预渲染的路径时展示404页面
+    // true: 当访问没有被预渲染的路径时, 先展示后备UI, Next.js 会在客户端请求时进行预渲染, 完后后显示预渲染结果
+    fallback: true,
+  };
+}
+
+// 第二步: 根据路由参数编译静态 HTML 文件
+// 在构建时 Next 先调用 getStaticPaths 方法获取所有路由参数
+// 遍历路由参数, 不断调用 getStaticProps 方法编译静态HTML文件
+export async function getStaticProps({ params }) {
+  let response = await axios.get(`http://localhost:3001/todos/${params.id}`);
+  await delay(2000);
+  return {
+    props: {
+      todo: response.data,
+    },
+    // 设置当前页面缓存的过期时间
+    // 当前页面被访问时, 如果缓存时间过期, 触发当前页面的重新预渲染
+    // 当次访问用户看到的仍然是缓存页面, 当重新预渲染完成后, 下次用户访问时看到的就是新页面了
+    revalidate: 10,
+  };
+}
+
+function delay(time) {
+  return new Promise((resolve) => setTimeout(resolve, time));
+}
+```
+
+#### 6.2.5 服务端渲染
+
+服务端渲染是指在客户端发送请求时，服务器端即时编译 HTML，编译完成后将 HTML 代码发送到客户端。
+
+服务端渲染方式适用于页面内容频繁发生变化场景且需要 SEO 的场景。
+
+getServerSideProps 方法在服务端执行，内部可以调用 API 路由，也可以直接查询数据库。
+
+```react
+import Post from "@/models/Post";
+
+export default function Posts({ posts }) {
+  return (
+    <ul>
+      {posts.map((post, index) => (
+        <li key={index}>
+          <h1>{post.title}</h1>
+          <p>{post.description}</p>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+export async function getServerSideProps() {
+  const posts = await Post.find({});
+  return {
+    props: {
+      posts: JSON.parse(JSON.stringify(posts)),
+    },
+  };
+}
+```
+
+#### 6.2.6 混合渲染
+
+混合渲染是指客户端渲染和服务端渲染、客户端渲染和预渲染可以混合使用。
+
+比如文章详情页面，文章内容不会经常变化可以使用预渲染，而文章评论需要实时更新可以使用客户端渲染。
+
+```react
+// pages/api/comments/index.js
+export default function comments(req, res) {
+  res.send([
+    { id: 1, content: "评论1" },
+    { id: 2, content: "评论2" },
+  ]);
+}
+```
+
+```react
+import axios from "axios";
+import { useState, useEffect } from "react";
+
+export default function Posts({ posts }) {
+  const [comments, setComments] = useState([]);
+  useEffect(() => {
+    axios.get("http://localhost:3000/api/comments").then((response) => {
+      setComments(response.data);
+    });
+  }, []);
+  return (
+    <>
+      {/* 预渲染部分开始 */}
+      <ul>
+        {posts.map((post, index) => (
+          <li key={index}>
+            <h1>{post.title}</h1>
+            <p>{post.description}</p>
+          </li>
+        ))}
+      </ul>
+      {/* 预渲染部分结束 */}
+      {/* 动态渲染部分开始 */}
+      <ul>
+        {comments.map((comment) => (
+          <li key={comment.id}>{comment.content}</li>
+        ))}
+      </ul>
+      {/* 动态渲染部分结束 */}
+    </>
+  );
+}
+
+export async function getStaticProps() {
+  let response = await axios.get("http://localhost:3000/api/posts");
+  return {
+    props: {
+      posts: response.data.posts,
+    },
+  };
+}
+```
+
+#### 6.2.7 为应用添加样式
+
+Next.js 推荐将所有样式表文件存储在 styles 目录中。
