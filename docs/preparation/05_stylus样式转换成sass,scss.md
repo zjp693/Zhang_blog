@@ -18,7 +18,7 @@ stylus-conver -i demo.styl -o demo.scss
 
 解释
 
-```
+```js
 stylus-conver -i 源样式文件夹名  -o 转化之后的文件夹名（自动生成）
 ```
 

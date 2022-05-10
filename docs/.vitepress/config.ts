@@ -42,6 +42,7 @@ function getGuideSidebar() {
         { text: '2.script setup语法糖', link: '/preparation/02_script setup语法糖' },
         { text: '3.mysql80安装教程', link: '/preparation/03_mysql80安装教程' },
         { text: '4.React笔记', link: '/preparation/04_React笔记' },
+        { text: '5.stylus样式转换成sass scss', link: '/preparation/05_stylus样式转换成sass,scss' },
       ]
     },
     {
