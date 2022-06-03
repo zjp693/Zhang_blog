@@ -51,5 +51,11 @@ function getGuideSidebar() {
         { text: '4.React笔记', link: '/preparation/04_React笔记' },
       ]
     },
+    {
+      text: "前端基础",
+      children: [
+        { text: '1.HTML篇', link: '/preparation/前端基础/01.HTML篇' },
+      ]
+    },
   ]
 }
