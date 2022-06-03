@@ -55,6 +55,7 @@ function getGuideSidebar() {
       text: "前端基础",
       children: [
         { text: '1.HTML篇', link: '/preparation/前端基础/01.HTML篇' },
+        { text: '2.CSS篇', link: '/preparation/前端基础/02.CSS篇' },
       ]
     },
   ]
