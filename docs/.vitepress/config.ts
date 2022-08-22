@@ -56,7 +56,7 @@ function getGuideSidebar() {
       children: [
         { text: '1.HTML篇', link: '/preparation/前端基础/01.HTML篇' },
         { text: '2.CSS篇', link: '/preparation/前端基础/02.CSS篇' },
-        // { text: '3.HTML/CSS混合篇', link: '/preparation/前端基础/03.HTML和CSS混合篇' },
+        { text: '3.HTML/CSS混合篇', link: '/preparation/前端基础/03.HTML和CSS混合篇' },
         { text: '4.三种本地存储的区别', link: '/preparation/前端基础/04.三种本地存储的区别' },
       ]
     },
