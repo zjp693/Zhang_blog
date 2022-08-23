@@ -57,6 +57,7 @@ function getGuideSidebar() {
         { text: '1.HTML篇', link: '/preparation/前端基础/01.HTML篇' },
         { text: '2.CSS篇', link: '/preparation/前端基础/02.CSS篇' },
         { text: '3.三种本地存储的区别', link: '/preparation/前端基础/03.三种本地存储的区别' },
+        { text: '4.promise是什么与使用方法', link: '/preparation/前端基础/04.promise是什么与使用方法' },
       ]
     },
   ]
