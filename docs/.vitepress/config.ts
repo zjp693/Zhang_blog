@@ -58,6 +58,8 @@ function getGuideSidebar() {
         { text: '2.CSS篇', link: '/preparation/前端基础/02.CSS篇' },
         { text: '3.三种本地存储的区别', link: '/preparation/前端基础/03.三种本地存储的区别' },
         { text: '4.promise是什么与使用方法', link: '/preparation/前端基础/04.promise是什么与使用方法' },
+        { text: '5.JS数据类型', link: '/preparation/前端基础/05.JS数据类型' },
+        { text: '6.JavaScript有几种方法判断变量的类型', link: '/preparation/前端基础/06.JavaScript有几种方法判断变量的类型' },
       ]
     },
   ]
