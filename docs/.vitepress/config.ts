@@ -60,6 +60,7 @@ function getGuideSidebar() {
         { text: '4.promise是什么与使用方法', link: '/preparation/前端基础/04.promise是什么与使用方法' },
         { text: '5.JS数据类型', link: '/preparation/前端基础/05.JS数据类型' },
         { text: '6.JavaScript有几种方法判断变量的类型', link: '/preparation/前端基础/06.JavaScript有几种方法判断变量的类型' },
+        { text: '8.var、let、const之间的区别', link: '/preparation/前端基础/08.var、let、const之间的区别' },
       ]
     },
   ]
