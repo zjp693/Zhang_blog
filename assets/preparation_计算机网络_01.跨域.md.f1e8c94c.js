@@ -1,0 +1,1 @@
+import{_ as e,c as t,o as a}from"./app.b3477ce4.js";const f='{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"preparation/\u8BA1\u7B97\u673A\u7F51\u7EDC/01.\u8DE8\u57DF.md"}',r={};function o(_,c,n,s,p,i){return a(),t("div")}var l=e(r,[["render",o]]);export{f as __pageData,l as default};

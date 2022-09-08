@@ -1,0 +1,1 @@
+import{_ as n,c as s,o as a,a as p}from"./app.b3477ce4.js";const d='{"title":"\u8FD9\u4E00\u6B21\uFF0C\u5F7B\u5E95\u5F04\u61C2 Promise \u539F\u7406","description":"","frontmatter":{},"headers":[],"relativePath":"preparation/01_promise.md"}',t={},e=p("",64),o=[e];function c(l,u,r,i,k,m){return a(),s("div",null,o)}var g=n(t,[["render",c]]);export{d as __pageData,g as default};
