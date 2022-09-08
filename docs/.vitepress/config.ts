@@ -61,6 +61,7 @@ function getGuideSidebar() {
         { text: '5.JS数据类型', link: '/preparation/前端基础/05.JS数据类型' },
         { text: '6.JavaScript有几种方法判断变量的类型', link: '/preparation/前端基础/06.JavaScript有几种方法判断变量的类型' },
         { text: '8.var、let、const之间的区别', link: '/preparation/前端基础/08.var、let、const之间的区别' },
+        { text: '9.址栏输入 URL 敲下回车后发生了什么', link: '/preparation/前端基础/09.址栏输入 URL 敲下回车后发生了什么' },
       ]
     },
   ]
